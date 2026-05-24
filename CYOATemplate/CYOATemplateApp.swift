@@ -9,15 +9,23 @@ import SwiftUI
 
 @main
 struct CYOATemplateApp: App {
-    // 1. Create the persistent instance inside your root app target
+    // 1. Instantiate the Global Appearance & Customization Settings Controller
     @StateObject private var settingsManager = StorySettingsManager()
+    
+    // 2. Holds the player's best friend name; starts empty to show onboarding first
+    @State private var globalBestieName: String = ""
 
     var body: some Scene {
         WindowGroup {
-            // 2. This passes your state tracking down to your primary layout view
-            // (Replace 'ContentView()' with whatever your main game screen or book view is named)
-            BestieSetupView(bestieName: <#Binding<String>#>)
-                .environmentObject(settingsManager)
+            if globalBestieName.isEmpty {
+                // Displays your friend setup screen on launch
+                BestieSetupView(bestieName: $globalBestieName)
+                    .environmentObject(settingsManager)
+            } else {
+                // Seamlessly boots your dynamic database engine once they press continue
+                DynamicStoryView()
+                    .environmentObject(settingsManager)
+            }
         }
     }
 }
