@@ -5,9 +5,16 @@
 //  Created by Yuk Tung Chao on 2026-05-24.
 //
 
+
+//
+//  StorySettingsPanel.swift
+//  CYOATemplate
+//
+
 import SwiftUI
 
 struct StorySettingsPanel: View {
+    
     @ObservedObject var settings: StorySettingsManager
     
     var body: some View {
@@ -23,8 +30,11 @@ struct StorySettingsPanel: View {
                 .foregroundColor(.secondary)
             
             Toggle(isOn: $settings.isDarkMode) {
-                Label("Dark Mode Theme", systemImage: settings.isDarkMode ? "moon.fill" : "sun.max.fill")
-                    .font(.body.monospaced())
+                Label(
+                    "Dark Mode Theme",
+                    systemImage: settings.isDarkMode ? "moon.fill" : "sun.max.fill"
+                )
+                .font(.body.monospaced())
             }
             .toggleStyle(SwitchToggleStyle(tint: .red))
             
@@ -38,8 +48,9 @@ struct StorySettingsPanel: View {
                     Text("\(Int(settings.fontSize))pt")
                         .font(.caption.monospaced())
                 }
+                
                 Slider(value: $settings.fontSize, in: 14...26, step: 1)
-                    .accentColor(.red)
+                    .tint(.red)
             }
             
             Divider()
@@ -52,12 +63,14 @@ struct StorySettingsPanel: View {
                     Text("\(Int(settings.overlayBrightness * 100))%")
                         .font(.caption.monospaced())
                 }
+                
                 Slider(value: $settings.overlayBrightness, in: 0.15...1.0)
-                    .accentColor(.red)
+                    .tint(.red)
             }
         }
         .padding([.horizontal, .bottom], 24)
         .background(settings.isDarkMode ? Color(.systemGray6) : Color(.systemBackground))
         .cornerRadius(20)
+        .padding(.horizontal)
     }
 }
