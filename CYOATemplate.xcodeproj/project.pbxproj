@@ -40,6 +40,8 @@
 		81C198BB2A251B1B0047A4B3 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BA2A251B1B0047A4B3 /* Page.swift */; };
 		81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BC2A251B2B0047A4B3 /* Edge.swift */; };
 		81C198BF2A251B4D0047A4B3 /* Ending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BE2A251B4D0047A4B3 /* Ending.swift */; };
+		B0CEA14F2FC35279005A027F /* StorySettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */; };
+		B0CEA1532FC3561C005A027F /* LocalStoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA1522FC35619005A027F /* LocalStoryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +76,8 @@
 		81C198BA2A251B1B0047A4B3 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		81C198BC2A251B2B0047A4B3 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		81C198BE2A251B4D0047A4B3 /* Ending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ending.swift; sourceTree = "<group>"; };
+		B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySettingsManager.swift; sourceTree = "<group>"; };
+		B0CEA1522FC35619005A027F /* LocalStoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 		8123CD272A34F98F00F9DF1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B0CEA1522FC35619005A027F /* LocalStoryData.swift */,
 				8123CD282A34F99E00F9DF1C /* StoryInformation.swift */,
 				8123CD2C2A34FE4800F9DF1C /* DirectedGraphBuilder.swift */,
 			);
@@ -145,6 +150,7 @@
 				812F512E2C0CDC3300C1A270 /* BookStore.swift */,
 				812F513E2C0DC6F800C1A270 /* PageViewModel.swift */,
 				812F51402C0DC94200C1A270 /* EdgesViewModel.swift */,
+				B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -350,6 +356,7 @@
 				812F51572C0DF4DA00C1A270 /* Ending.swift in Sources */,
 				812F51582C0DF4DA00C1A270 /* Reader.swift in Sources */,
 				8123CD2B2A34F9C100F9DF1C /* SharedFunctions.swift in Sources */,
+				B0CEA1532FC3561C005A027F /* LocalStoryData.swift in Sources */,
 				8123CD292A34F99E00F9DF1C /* StoryInformation.swift in Sources */,
 				8123CD2D2A34FE4800F9DF1C /* DirectedGraphBuilder.swift in Sources */,
 			);
@@ -362,6 +369,7 @@
 				81C198BB2A251B1B0047A4B3 /* Page.swift in Sources */,
 				81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */,
 				51E0E1C72FC2B7AE00201BF0 /* BestieSetupView.swift in Sources */,
+				B0CEA14F2FC35279005A027F /* StorySettingsManager.swift in Sources */,
 				812F51052C0C9FAD00C1A270 /* Supabase.swift in Sources */,
 				812F51462C0DE6FE00C1A270 /* Enumerations.swift in Sources */,
 				812F51412C0DC94200C1A270 /* EdgesViewModel.swift in Sources */,
