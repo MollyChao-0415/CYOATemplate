@@ -1,41 +1,29 @@
-//
-//  DynamicStoryView.swift
-//  CYOATemplate
-//
-//  Created by Yuk Tung Chao on 2026-05-24.
-//
-
 import SwiftUI
 
 struct DynamicStoryView: View {
-    // Shared environment preferences
+    // Shared accessibility theme preferences
     @EnvironmentObject var settings: StorySettingsManager
     
-    // Connect to your existing ViewModels using the @Observable macro system
-    @State private var pageVM: PageViewModel
-    @State private var edgesVM: EdgesViewModel
-    
-    @State private var showSettings: Bool = false
+    // Explicitly tracks your specific spreadsheet node IDs as Strings
+    @State private var activeNodeID: String = "N0"
     @State private var countdownActive: Bool = true
+    @State private var showSettings: Bool = false
     
-    // Custom init to wire your existing classes cleanly
-    init() {
-        let store = BookStore()
-        self._pageVM = State(initialValue: PageViewModel(book: store))
-        self._edgesVM = State(initialValue: EdgesViewModel(book: store))
+    // Filtered list of choice edges belonging to your specific section
+    private var currentEdges: [StoryEdge] {
+        LocalStoryDatabase.edges.filter { $0.fromNode == activeNodeID }
     }
 
     var body: some View {
         ZStack {
-            // Background Layer Handler
+            // Background Theme Controller
             (settings.isDarkMode ? Color.black : Color.white)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Header Trace Console Strip
+                // Top Interactive Trace Header Bar
                 HStack {
-                    // Pulls the Integer ID safely and prints it
-                    Text("LOG_TRACE_ID:// \(pageVM.page?.id ?? 1)")
+                    Text("ASSIGNED_NODE_ID:// \(activeNodeID)")
                         .font(.caption.monospaced())
                         .foregroundColor(.red)
                         .bold()
@@ -48,35 +36,40 @@ struct DynamicStoryView: View {
                 }
                 .padding()
                 
-                // Narrative Scrolling Text Box mapping your Supabase text column
+                // Narrative Main Text Terminal
                 ScrollView {
-                    // Looks at pageVM.page?.body or pageVM.page?.narrative based on your model
-                    Text(pageVM.page?.narrative ?? "Initializing connection to database...")
-                        .font(.system(size: settings.fontSize, weight: .medium, design: .monospaced))
-                        .foregroundColor(settings.isDarkMode ? .white : .black)
-                        .lineSpacing(6)
-                        .padding(24)
-                        .horrorGlitch() // Custom real-time visual distortion modifier
-                        .id(pageVM.page?.id) // Automatically triggers smooth update when page changes
+                    if let currentNode = LocalStoryDatabase.nodes[activeNodeID] {
+                        Text(currentNode.narrativeText)
+                            .font(.system(size: settings.fontSize, weight: .medium, design: .monospaced))
+                            .foregroundColor(settings.isDarkMode ? .white : .black)
+                            .lineSpacing(6)
+                            .padding(24)
+                            .horrorGlitch() // Ambient text shudder and red flash modifier
+                            .id(activeNodeID) // Triggers smooth redraw animation when text changes
+                    } else {
+                        // Fallback indicator if navigation lands out of scope
+                        Text("ERROR: NODE '\(activeNodeID)' OUTSIDE ASSIGNED ASSIGNMENT SCOPE.")
+                            .font(.caption.monospaced())
+                            .foregroundColor(.red)
+                            .padding(24)
+                    }
                 }
                 
                 Spacer()
                 
-                // Time-Pressure Panic Timer Component Integration
-                // This triggers specifically on your first node (ID 1)
-                if (pageVM.page?.id == 1) && countdownActive {
+                // Time-Pressure Panic Timer Layout Integration
+                // Automatically triggers if your active node data is flagged as "isDanger: true"
+                if let node = LocalStoryDatabase.nodes[activeNodeID], node.isDanger && countdownActive {
                     PanicTimerView(totalTime: 7.0) {
                         withAnimation {
                             countdownActive = false
                             
-                            // Automatically forces the reader down your fallback row if time expires
-                            Task {
-                                // Forces page navigation to your designated failure node (e.g., Row 3)
-                                await pageVM.fetchPage(id: 3)
-                                if let store = pageVM.book {
-                                    edgesVM.edges = try? await store.getEdgesForCurrentPage()
-                                }
+                            // Forced penalty branch destination if timer lapses on your N0 opening scene
+                            if activeNodeID == "N0" {
+                                activeNodeID = "N1B"
                             }
+                            
+                            countdownActive = true
                         }
                     }
                     .padding(.bottom, 12)
@@ -84,43 +77,31 @@ struct DynamicStoryView: View {
                 
                 // Dynamic Choice Button Matrix
                 VStack(spacing: 12) {
-                    if let choices = edgesVM.edges {
-                        ForEach(choices) { edge in
-                            Button(action: {
-                                withAnimation {
-                                    countdownActive = false // Halt current running timer
-                                    
-                                    // Direct async execution block to pull down destination page rows
-                                    Task {
-                                        // targetPageId links to destination rows in your spreadsheet model
-                                        await pageVM.fetchPage(id: edge.targetPageId)
-                                        if let store = pageVM.book {
-                                            edgesVM.edges = try? await store.getEdgesForCurrentPage()
-                                        }
-                                        
-                                        // Reset timer context status
-                                        countdownActive = true
-                                    }
-                                }
-                            }) {
-                                Text(edge.prompt.uppercased())
-                                    .font(.system(size: max(13, settings.fontSize - 2), weight: .bold, design: .monospaced))
-                                    .foregroundColor(settings.isDarkMode ? .black : .white)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(settings.isDarkMode ? Color.white : Color.black)
-                                    .cornerRadius(6)
+                    ForEach(currentEdges, id: \.id) { edge in
+                        Button(action: {
+                            withAnimation {
+                                countdownActive = false // Halt current running clock timeline
+                                activeNodeID = edge.toNode // Advance active node straight to next choice target string
+                                countdownActive = true // Re-arm timer configurations
                             }
-                            .padding(.horizontal, 24)
+                        }) {
+                            Text(edge.choiceText.uppercased())
+                                .font(.system(size: max(13, settings.fontSize - 2), weight: .bold, design: .monospaced))
+                                .foregroundColor(settings.isDarkMode ? .black : .white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(settings.isDarkMode ? Color.white : Color.black)
+                                .cornerRadius(6)
                         }
+                        .padding(.horizontal, 24)
                     }
                 }
                 .padding(.bottom, 30)
             }
             .blur(radius: showSettings ? 3.0 : 0.0)
-            .opacity(settings.overlayBrightness) // Applies background light modifier
+            .opacity(settings.overlayBrightness) // Multiplies background brightness dimmer overlay values
             
-            // Drawer Panel Overlay Layer
+            // Slide Panel Drawer Customizer Overlays
             if showSettings {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
@@ -133,13 +114,6 @@ struct DynamicStoryView: View {
                         .transition(.move(edge: .bottom))
                 }
                 .zIndex(2)
-            }
-        }
-        .task {
-            // Initial asynchronous load call to open starting row #1 out of Supabase on launch
-            await pageVM.fetchPage(id: 1)
-            if let store = pageVM.book {
-                edgesVM.edges = try? await store.getEdgesForCurrentPage()
             }
         }
     }

@@ -5,15 +5,17 @@
 //  Created by Russell Gordon on 2024-06-03.
 //
 
+import SwiftUI
 import Foundation
 
-@Observable
-class EdgesViewModel: Observable {
+class EdgesViewModel: ObservableObject {
     
     // Details of the current page being read
-    var edges: [Edge]?
+    @Published var edges: [Edge]?
+    let book: BookStore
     
     init(book: BookStore) {
+        self.book = book
         
         // Load the edges for this page
         Task {
