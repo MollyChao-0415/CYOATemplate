@@ -5,15 +5,18 @@
 //  Created by Russell Gordon on 2024-06-03.
 //
 
+import SwiftUI
 import Foundation
 
-@Observable
-class PageViewModel: Observable {
+class PageViewModel: ObservableObject {
     
     // Details of the current page being read
-    var page: Page?
+    @Published var page: Page?
+    let book: BookStore
     
     init(book: BookStore) {
+        
+        self.book = book
         
         // Load the details of the current page from the database
         Task {
