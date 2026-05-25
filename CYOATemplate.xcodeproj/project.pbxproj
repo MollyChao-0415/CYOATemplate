@@ -23,7 +23,6 @@
 		812F513F2C0DC6F800C1A270 /* PageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F513E2C0DC6F800C1A270 /* PageViewModel.swift */; };
 		812F51412C0DC94200C1A270 /* EdgesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F51402C0DC94200C1A270 /* EdgesViewModel.swift */; };
 		812F51442C0DE64A00C1A270 /* VocabularyQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F51432C0DE64A00C1A270 /* VocabularyQuizView.swift */; };
-		812F51462C0DE6FE00C1A270 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812F51452C0DE6FE00C1A270 /* Enumerations.swift */; };
 		812F51482C0DF3C700C1A270 /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = 812F51472C0DF3C700C1A270 /* Auth */; };
 		812F514A2C0DF3C700C1A270 /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = 812F51492C0DF3C700C1A270 /* Functions */; };
 		812F514C2C0DF3C700C1A270 /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = 812F514B2C0DF3C700C1A270 /* PostgREST */; };
@@ -73,7 +72,6 @@
 		812F513E2C0DC6F800C1A270 /* PageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewModel.swift; sourceTree = "<group>"; };
 		812F51402C0DC94200C1A270 /* EdgesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesViewModel.swift; sourceTree = "<group>"; };
 		812F51432C0DE64A00C1A270 /* VocabularyQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyQuizView.swift; sourceTree = "<group>"; };
-		812F51452C0DE6FE00C1A270 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		81C198A52A251ABB0047A4B3 /* CYOATemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYOATemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81C198A82A251ABB0047A4B3 /* CYOATemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CYOATemplateApp.swift; sourceTree = "<group>"; };
 		81C198AC2A251ABC0047A4B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				812F51042C0C9FAD00C1A270 /* Supabase.swift */,
-				812F51452C0DE6FE00C1A270 /* Enumerations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				B0CEA1572FC358C4005A027F /* GlitchTextModifier.swift in Sources */,
 				B0CEA15F2FC35A9C005A027F /* StorySettingsPanel.swift in Sources */,
 				812F51052C0C9FAD00C1A270 /* Supabase.swift in Sources */,
-				812F51462C0DE6FE00C1A270 /* Enumerations.swift in Sources */,
 				812F51412C0DC94200C1A270 /* EdgesViewModel.swift in Sources */,
 				B0CEA15D2FC35A69005A027F /* PanicTimerView.swift in Sources */,
 				B0CEA1622FC3619F005A027F /* LocalStoryData.swift in Sources */,

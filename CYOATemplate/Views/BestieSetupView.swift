@@ -19,6 +19,7 @@ struct BestieSetupView: View {
             
             Text("Enter your best friend's name")
                 .font(.title2)
+                .fontWeight(.bold)
                 .foregroundColor(.white)
             
             TextField("Name", text: $inputName)
@@ -26,19 +27,22 @@ struct BestieSetupView: View {
                 .background(Color.white.opacity(0.12))
                 .cornerRadius(12)
                 .foregroundColor(.white)
+                .textInputAutocapitalization(.words)
+                .disableAutocorrection(true)
                 .padding(.horizontal, 40)
             
             Button("CONTINUE") {
-                let trimmedName = inputName.trimmingCharacters(in: .whitespaces)
+                let trimmedName = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
                 
                 if !trimmedName.isEmpty {
                     bestieName = trimmedName
                 }
             }
             .frame(width: 200, height: 50)
-            .background(Color.red)
+            .background(inputName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray : Color.red)
             .foregroundColor(.white)
             .cornerRadius(12)
+            .disabled(inputName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             
             Spacer()
         }
