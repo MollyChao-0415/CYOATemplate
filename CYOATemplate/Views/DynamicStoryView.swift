@@ -73,7 +73,7 @@ struct DynamicStoryView: View {
                 Spacer()
                 
                 if shouldShowTimer {
-                    PanicTimerView(totalTime: 7.0) {
+                    PanicTimerView(totalTime: 10.0) {
                         handleTimerExpired()
                     }
                     .padding(.bottom, 12)
