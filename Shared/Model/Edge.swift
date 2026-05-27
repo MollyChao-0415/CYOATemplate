@@ -5,22 +5,20 @@
 //  Created by Russell Gordon on 2023-05-29.
 //
 
+
 import Foundation
 
-struct Edge: Identifiable, Codable {
+struct Edge: Identifiable, Codable, Equatable {
     
     var id: Int
-    var prompt: String
-    var fromPage: Int
-    var toPage: Int
-
-    // When decoding and encoding from JSON, translate snake_case
-    // column names into camelCase
+    var prompt: String?
+    var toPage: Int?
+    var fromPage: Int?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case prompt
-        case fromPage = "from_page"
         case toPage = "to_page"
+        case fromPage = "from_page"
     }
-    
 }

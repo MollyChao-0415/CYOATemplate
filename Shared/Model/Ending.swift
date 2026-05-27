@@ -5,11 +5,12 @@
 //  Created by Russell Gordon on 2023-05-29.
 //
 
+
 import Foundation
 
-struct EndingType: Identifiable, Codable {
+struct EndingType: Identifiable, Codable, Equatable {
+    
     var id: Int
     var label: String
     var color: String
 }
-
