@@ -72,11 +72,11 @@ struct DynamicStoryView: View {
         let name = settings.displayedBestieName
         
         return text
-            .replacingOccurrences(of: "{{bestie}}", with: name)
+            .replacingOccurrences(of: "{{bestfired}}", with: name)
             .replacingOccurrences(of: "your best friend", with: name)
             .replacingOccurrences(of: "Your best friend", with: name)
-            .replacingOccurrences(of: "bestie", with: name)
-            .replacingOccurrences(of: "Bestie", with: name)
+            .replacingOccurrences(of: "Best friend", with: name)
+            .replacingOccurrences(of: "Best friend", with: name)
     }
     
     // MARK: - Header

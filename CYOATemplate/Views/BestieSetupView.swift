@@ -22,13 +22,13 @@ struct BestieSetupView: View {
                     .font(.largeTitle.monospaced().bold())
                     .foregroundColor(.red)
                 
-                Text("Before the alarm begins, enter your bestie's name.")
+                Text("Before the alarm begins, enter your bestfriend's name.")
                     .font(.body.monospaced())
                     .foregroundColor(.white.opacity(0.75))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
                 
-                TextField("Bestie's name", text: $settings.bestieName)
+                TextField("Best friend's name", text: $settings.bestieName)
                     .textFieldStyle(.roundedBorder)
                     .font(.body.monospaced())
                     .padding(.horizontal, 32)
@@ -47,7 +47,7 @@ struct BestieSetupView: View {
                 .padding(.horizontal, 32)
                 
                 Button {
-                    settings.bestieName = "your bestie"
+                    settings.bestieName = "your best friend"
                     settings.completeBestieSetup()
                 } label: {
                     Text("SKIP")
