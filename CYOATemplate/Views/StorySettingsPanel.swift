@@ -6,11 +6,6 @@
 //
 
 
-//
-//  StorySettingsPanel.swift
-//  CYOATemplate
-//
-
 import SwiftUI
 
 struct StorySettingsPanel: View {
@@ -18,59 +13,51 @@ struct StorySettingsPanel: View {
     @ObservedObject var settings: StorySettingsManager
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
+            
             Capsule()
+                .fill(Color.secondary.opacity(0.4))
                 .frame(width: 40, height: 5)
-                .foregroundColor(.secondary.opacity(0.3))
-                .padding(.top, 4)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 8)
             
-            Text("ACCESSIBILITY INTERFACE")
-                .font(.caption.monospaced())
-                .fontWeight(.bold)
-                .foregroundColor(.secondary)
+            Text("STORY SETTINGS")
+                .font(.headline.monospaced().bold())
+                .foregroundColor(.red)
             
-            Toggle(isOn: $settings.isDarkMode) {
-                Label(
-                    "Dark Mode Theme",
-                    systemImage: settings.isDarkMode ? "moon.fill" : "sun.max.fill"
-                )
+            Toggle("Dark Mode", isOn: $settings.isDarkMode)
                 .font(.body.monospaced())
-            }
-            .toggleStyle(SwitchToggleStyle(tint: .red))
             
-            Divider()
-            
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text("Text Display Scale")
-                        .font(.body.monospaced())
-                    Spacer()
-                    Text("\(Int(settings.fontSize))pt")
-                        .font(.caption.monospaced())
-                }
+            VStack(alignment: .leading) {
+                Text("Font Size: \(Int(settings.fontSize))")
+                    .font(.body.monospaced())
                 
-                Slider(value: $settings.fontSize, in: 14...26, step: 1)
-                    .tint(.red)
+                Slider(value: $settings.fontSize, in: 13...24, step: 1)
             }
             
-            Divider()
-            
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text("Display Exposure")
-                        .font(.body.monospaced())
-                    Spacer()
-                    Text("\(Int(settings.overlayBrightness * 100))%")
-                        .font(.caption.monospaced())
-                }
+            VStack(alignment: .leading) {
+                Text("Overlay Brightness")
+                    .font(.body.monospaced())
                 
-                Slider(value: $settings.overlayBrightness, in: 0.15...1.0)
-                    .tint(.red)
+                Slider(value: $settings.overlayBrightness, in: 0.55...1.0, step: 0.05)
             }
+            
+            Button {
+                settings.resetSettings()
+            } label: {
+                Text("RESET SETTINGS")
+                    .font(.caption.monospaced().bold())
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.red.opacity(0.2))
+                    .cornerRadius(8)
+            }
+            
         }
-        .padding([.horizontal, .bottom], 24)
-        .background(settings.isDarkMode ? Color(.systemGray6) : Color(.systemBackground))
-        .cornerRadius(20)
-        .padding(.horizontal)
+        .padding(24)
+        .background(settings.isDarkMode ? Color.black : Color.white)
+        .foregroundColor(settings.isDarkMode ? .white : .black)
+        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .padding()
     }
 }

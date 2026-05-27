@@ -9,43 +9,32 @@
 import Foundation
 import SwiftUI
 
-class StorySettingsManager: ObservableObject {
+final class StorySettingsManager: ObservableObject {
     
-    @Published var isDarkMode: Bool = true {
-        didSet {
-            UserDefaults.standard.set(isDarkMode, forKey: "cyoa_is_dark_mode")
-        }
+    @Published var isDarkMode: Bool = true
+    @Published var fontSize: CGFloat = 17
+    @Published var overlayBrightness: Double = 1.0
+    
+    @Published var bestieName: String = ""
+    @Published var hasCompletedBestieSetup: Bool = false
+    
+    var displayedBestieName: String {
+        let trimmed = bestieName.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? "your bestie" : trimmed
     }
     
-    @Published var fontSize: CGFloat = 18.0 {
-        didSet {
-            UserDefaults.standard.set(Double(fontSize), forKey: "cyoa_font_size")
-        }
+    func completeBestieSetup() {
+        hasCompletedBestieSetup = true
     }
     
-    @Published var overlayBrightness: Double = 1.0 {
-        didSet {
-            UserDefaults.standard.set(overlayBrightness, forKey: "cyoa_overlay_brightness")
-        }
+    func resetStorySetup() {
+        bestieName = ""
+        hasCompletedBestieSetup = false
     }
     
-    init() {
-        UserDefaults.standard.register(defaults: [
-            "cyoa_is_dark_mode": true,
-            "cyoa_font_size": 18.0,
-            "cyoa_overlay_brightness": 1.0
-        ])
-        
-        self.isDarkMode = UserDefaults.standard.bool(forKey: "cyoa_is_dark_mode")
-        self.fontSize = CGFloat(UserDefaults.standard.double(forKey: "cyoa_font_size"))
-        self.overlayBrightness = UserDefaults.standard.double(forKey: "cyoa_overlay_brightness")
-        
-        if self.fontSize == 0 {
-            self.fontSize = 18.0
-        }
-        
-        if self.overlayBrightness == 0 {
-            self.overlayBrightness = 1.0
-        }
+    func resetSettings() {
+        isDarkMode = true
+        fontSize = 17
+        overlayBrightness = 1.0
     }
 }

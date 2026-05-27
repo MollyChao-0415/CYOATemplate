@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510E65602FC6B5EC00570004 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E655F2FC6B5E300570004 /* StoryViewModel.swift */; };
 		51E0E1C72FC2B7AE00201BF0 /* BestieSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E0E1C62FC2B7AE00201BF0 /* BestieSetupView.swift */; };
 		8123CD292A34F99E00F9DF1C /* StoryInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123CD282A34F99E00F9DF1C /* StoryInformation.swift */; };
 		8123CD2B2A34F9C100F9DF1C /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123CD2A2A34F9C100F9DF1C /* SharedFunctions.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		510E655F2FC6B5E300570004 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		51E0E1C62FC2B7AE00201BF0 /* BestieSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestieSetupView.swift; sourceTree = "<group>"; };
 		8123CD162A34CF7B00F9DF1C /* GraphGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GraphGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		8123CD282A34F99E00F9DF1C /* StoryInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryInformation.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		812F512D2C0CDA1100C1A270 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				510E655F2FC6B5E300570004 /* StoryViewModel.swift */,
 				B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */,
 			);
 			path = ViewModels;
@@ -362,6 +365,7 @@
 				B0CEA1612FC35AB4005A027F /* DynamicStoryView.swift in Sources */,
 				B0CEA14F2FC35279005A027F /* StorySettingsManager.swift in Sources */,
 				B0CEA1572FC358C4005A027F /* GlitchTextModifier.swift in Sources */,
+				510E65602FC6B5EC00570004 /* StoryViewModel.swift in Sources */,
 				B0CEA15F2FC35A9C005A027F /* StorySettingsPanel.swift in Sources */,
 				812F51052C0C9FAD00C1A270 /* Supabase.swift in Sources */,
 				B0CEA15D2FC35A69005A027F /* PanicTimerView.swift in Sources */,
