@@ -20,7 +20,7 @@ final class StorySettingsManager: ObservableObject {
     
     var displayedBestieName: String {
         let trimmed = bestieName.trimmingCharacters(in: .whitespacesAndNewlines)
-        return trimmed.isEmpty ? "your bestie" : trimmed
+        return trimmed.isEmpty ? "your best friend" : trimmed
     }
     
     func completeBestieSetup() {
