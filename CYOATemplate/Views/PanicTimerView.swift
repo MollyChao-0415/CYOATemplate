@@ -5,11 +5,6 @@
 //  Created by Yuk Tung Chao on 2026-05-24.
 //
 
-//
-//  PanicTimerView.swift
-//  CYOATemplate
-//
-
 import SwiftUI
 
 struct PanicTimerView: View {

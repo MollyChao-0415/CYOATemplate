@@ -5,22 +5,22 @@
 //  Created by Russell Gordon on 2023-05-29.
 //
 
+
 import SwiftUI
 
 @main
 struct CYOATemplateApp: App {
     
-    @StateObject private var settingsManager = StorySettingsManager()
-    @State private var globalBestieName: String = ""
+    @StateObject private var settings = StorySettingsManager()
     
     var body: some Scene {
         WindowGroup {
-            if globalBestieName.isEmpty {
-                BestieSetupView(bestieName: $globalBestieName)
-                    .environmentObject(settingsManager)
+            if settings.hasCompletedBestieSetup {
+                DynamicStoryView()
+                    .environmentObject(settings)
             } else {
-                DynamicStoryView(bestieName: globalBestieName)
-                    .environmentObject(settingsManager)
+                BestieSetupView()
+                    .environmentObject(settings)
             }
         }
     }

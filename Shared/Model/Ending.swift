@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct EndingType: Identifiable, Codable {
+struct EndingType: Identifiable, Codable, Equatable {
+    
     var id: Int
     var label: String
     var color: String
 }
-

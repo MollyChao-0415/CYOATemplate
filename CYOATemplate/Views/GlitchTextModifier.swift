@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct GlitchTextModifier: ViewModifier {
+    
     @State private var xOffset: CGFloat = 0
     @State private var yOffset: CGFloat = 0
     @State private var blurRadius: CGFloat = 0
@@ -20,7 +21,6 @@ struct GlitchTextModifier: ViewModifier {
             .blur(radius: blurRadius)
             .colorMultiply(isGlitched ? Color(red: 1.0, green: 0.3, blue: 0.3) : .white)
             .onAppear {
-                // Background loop triggering chaotic text layout shifts
                 Timer.scheduledTimer(withTimeInterval: 0.35, repeats: true) { _ in
                     if Double.random(in: 0...1) > 0.88 {
                         withAnimation(.easeInOut(duration: 0.04)) {
@@ -29,7 +29,7 @@ struct GlitchTextModifier: ViewModifier {
                             blurRadius = CGFloat.random(in: 0...1.2)
                             isGlitched = true
                         }
-                        // Reset back to absolute coordinate alignment
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
                             xOffset = 0
                             yOffset = 0

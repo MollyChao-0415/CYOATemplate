@@ -9,44 +9,52 @@ import SwiftUI
 
 struct BestieSetupView: View {
     
-    @Binding var bestieName: String
-    @State private var inputName = ""
+    @EnvironmentObject var settings: StorySettingsManager
     
     var body: some View {
-        VStack(spacing: 25) {
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
             
-            Spacer()
-            
-            Text("Enter your best friend's name")
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-            
-            TextField("Name", text: $inputName)
-                .padding()
-                .background(Color.white.opacity(0.12))
-                .cornerRadius(12)
-                .foregroundColor(.white)
-                .textInputAutocapitalization(.words)
-                .disableAutocorrection(true)
-                .padding(.horizontal, 40)
-            
-            Button("CONTINUE") {
-                let trimmedName = inputName.trimmingCharacters(in: .whitespacesAndNewlines)
+            VStack(spacing: 24) {
                 
-                if !trimmedName.isEmpty {
-                    bestieName = trimmedName
+                Text("DO NOT OPEN")
+                    .font(.largeTitle.monospaced().bold())
+                    .foregroundColor(.red)
+                
+                Text("Before the alarm begins, enter your bestie's name.")
+                    .font(.body.monospaced())
+                    .foregroundColor(.white.opacity(0.75))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+                
+                TextField("Bestie's name", text: $settings.bestieName)
+                    .textFieldStyle(.roundedBorder)
+                    .font(.body.monospaced())
+                    .padding(.horizontal, 32)
+                
+                Button {
+                    settings.completeBestieSetup()
+                } label: {
+                    Text("START STORY")
+                        .font(.headline.monospaced().bold())
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal, 32)
+                
+                Button {
+                    settings.bestieName = "your bestie"
+                    settings.completeBestieSetup()
+                } label: {
+                    Text("SKIP")
+                        .font(.caption.monospaced())
+                        .foregroundColor(.white.opacity(0.6))
                 }
             }
-            .frame(width: 200, height: 50)
-            .background(inputName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? Color.gray : Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(12)
-            .disabled(inputName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-            
-            Spacer()
         }
-        .background(Color.black)
-        .ignoresSafeArea()
     }
 }
