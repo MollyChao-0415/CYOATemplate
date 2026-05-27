@@ -37,12 +37,10 @@
 		81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BC2A251B2B0047A4B3 /* Edge.swift */; };
 		81C198BF2A251B4D0047A4B3 /* Ending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C198BE2A251B4D0047A4B3 /* Ending.swift */; };
 		B0CEA14F2FC35279005A027F /* StorySettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */; };
-		B0CEA1532FC3561C005A027F /* LocalStoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA1522FC35619005A027F /* LocalStoryData.swift */; };
 		B0CEA1572FC358C4005A027F /* GlitchTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA1562FC358C4005A027F /* GlitchTextModifier.swift */; };
 		B0CEA15D2FC35A69005A027F /* PanicTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA15C2FC35A69005A027F /* PanicTimerView.swift */; };
 		B0CEA15F2FC35A9C005A027F /* StorySettingsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA15E2FC35A9C005A027F /* StorySettingsPanel.swift */; };
 		B0CEA1612FC35AB4005A027F /* DynamicStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA1602FC35AB4005A027F /* DynamicStoryView.swift */; };
-		B0CEA1622FC3619F005A027F /* LocalStoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CEA1522FC35619005A027F /* LocalStoryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,7 +72,6 @@
 		81C198BC2A251B2B0047A4B3 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		81C198BE2A251B4D0047A4B3 /* Ending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ending.swift; sourceTree = "<group>"; };
 		B0CEA14E2FC35279005A027F /* StorySettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySettingsManager.swift; sourceTree = "<group>"; };
-		B0CEA1522FC35619005A027F /* LocalStoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStoryData.swift; sourceTree = "<group>"; };
 		B0CEA1562FC358C4005A027F /* GlitchTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlitchTextModifier.swift; sourceTree = "<group>"; };
 		B0CEA15C2FC35A69005A027F /* PanicTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanicTimerView.swift; sourceTree = "<group>"; };
 		B0CEA15E2FC35A9C005A027F /* StorySettingsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySettingsPanel.swift; sourceTree = "<group>"; };
@@ -138,7 +135,6 @@
 		8123CD272A34F98F00F9DF1C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B0CEA1522FC35619005A027F /* LocalStoryData.swift */,
 				8123CD282A34F99E00F9DF1C /* StoryInformation.swift */,
 				8123CD2C2A34FE4800F9DF1C /* DirectedGraphBuilder.swift */,
 			);
@@ -349,7 +345,6 @@
 				812F51572C0DF4DA00C1A270 /* Ending.swift in Sources */,
 				812F51582C0DF4DA00C1A270 /* Reader.swift in Sources */,
 				8123CD2B2A34F9C100F9DF1C /* SharedFunctions.swift in Sources */,
-				B0CEA1532FC3561C005A027F /* LocalStoryData.swift in Sources */,
 				8123CD292A34F99E00F9DF1C /* StoryInformation.swift in Sources */,
 				8123CD2D2A34FE4800F9DF1C /* DirectedGraphBuilder.swift in Sources */,
 			);
@@ -369,7 +364,6 @@
 				B0CEA15F2FC35A9C005A027F /* StorySettingsPanel.swift in Sources */,
 				812F51052C0C9FAD00C1A270 /* Supabase.swift in Sources */,
 				B0CEA15D2FC35A69005A027F /* PanicTimerView.swift in Sources */,
-				B0CEA1622FC3619F005A027F /* LocalStoryData.swift in Sources */,
 				81C198A92A251ABB0047A4B3 /* CYOATemplateApp.swift in Sources */,
 				81C198BF2A251B4D0047A4B3 /* Ending.swift in Sources */,
 				812F513D2C0D0FB500C1A270 /* Reader.swift in Sources */,
